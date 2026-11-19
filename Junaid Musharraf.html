@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Junaid Musharraf — Full-Stack Developer</title>
+    <meta name="description" content="Computer Science graduate and MS Project Management candidate building resilient full-stack React, Django, and PostgreSQL platforms, air-gapped enterprise AI pipelines and scalable digital products.">
+
+    <!-- Open Graph / Social Link Preview Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Junaid Musharraf — Full-Stack Developer">
+    <meta property="og:description" content="Full-Stack Developer crafting resilient systems, enterprise AI workflows and refined interfaces.">
+    <meta property="og:site_name" content="Junaid Musharraf">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Junaid Musharraf — Full-Stack Developer">
+    <meta name="twitter:description" content="Full-Stack Developer crafting resilient systems, enterprise AI workflows, and refined interfaces.">
+    
+    <!-- Google Fonts: Instrument Serif, Plus Jakarta Sans, and JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=JetBrains+Mono:wght@300;400;500&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest" crossorigin="anonymous"></script>
+
+    <!-- Tailwind Configuration for Custom Fonts & Colors -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        obsidian: '#0a0a0a',
+                        charcoal: '#111111',
+                        surface: '#141414',
+                        stone: '#f3f2ee',
+                        muted: '#888888',
+                        subtle: '#555555',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Base Styling & Subtle Film Grain Overlay */
+        :root {
+            --bg-primary: #0a0a0a;
+            --text-primary: #f3f2ee;
+            --text-muted: #888888;
+            --border-hairline: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Subtle Noise Texture Overlay */
+        .grain-overlay {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.032;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #262626;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #404040;
+        }
+
+        /* Hide horizontal scrollbar for library carousel while maintaining scrollability */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Subtle Ambient Radial Glow */
+        .ambient-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(243, 242, 238, 0.045) 0%, rgba(10, 10, 10, 0) 65%);
+        }
+
+        /* Tactile Cursor Spotlight on Cards */
+        .spotlight-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            background: radial-gradient(
+                520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+                rgba(243, 242, 238, 0.065),
+                transparent 45%
+            );
+            z-index: 1;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+        .spotlight-card > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Book Spine Lighting Effect */
+        .book-cover {
+            box-shadow: 
+                inset 4px 0 8px rgba(255, 255, 255, 0.08),
+                inset -2px 0 6px rgba(0, 0, 0, 0.6),
+                0 12px 24px -8px rgba(0, 0, 0, 0.7);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+        }
+        .book-card:hover .book-cover {
+            transform: translateY(-6px) scale(1.015);
+            box-shadow: 
+                inset 4px 0 10px rgba(255, 255, 255, 0.14),
+                inset -2px 0 6px rgba(0, 0, 0, 0.6),
+                0 20px 32px -8px rgba(0, 0, 0, 0.85);
+        }
+
+        /* Active Navigation State */
+        .nav-link.active {
+            color: #f3f2ee;
+        }
+
+        /* Fade-in Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(16px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Case Study Modal Transition */
+        #case-study-modal {
+            transition: opacity 0.25s ease;
+        }
+        #case-study-panel {
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+        }
+    </style>
+</head>
+<body class="bg-obsidian text-stone selection:bg-stone selection:text-obsidian relative">
+
+    <!-- Subtle Film Grain Overlay -->
+    <div class="grain-overlay" aria-hidden="true"></div>
+
+    <!-- Top Ambient Light -->
+    <div class="ambient-glow fixed inset-x-0 top-0 h-[550px] pointer-events-none z-0" aria-hidden="true"></div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
+        <div class="bg-[#161616] border border-white/15 text-stone px-4 py-3 rounded-lg shadow-2xl flex items-center gap-3 text-sm">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <span id="toast-message">Copied jmush2018@gmail.com to clipboard</span>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         CASE STUDY ARCHITECTURE MODAL
+    ====================================================================== -->
+    <div id="case-study-modal" class="fixed inset-0 z-50 hidden opacity-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-title" onclick="handleModalBackdropClick(event)">
+        <div id="case-study-panel" class="w-full max-w-2xl max-h-[88vh] overflow-y-auto rounded-2xl bg-[#111111] border border-white/15 shadow-2xl p-6 sm:p-9 transform scale-95 opacity-0">
+            <!-- Modal Header -->
+            <div class="flex items-start justify-between gap-4 pb-6 border-b border-white/[0.08]">
+                <div>
+                    <span id="modal-category" class="font-mono text-[11px] uppercase tracking-widest text-muted block mb-2">01 / SYSTEM ARCHITECTURE</span>
+                    <h3 id="modal-title" class="font-serif text-3xl sm:text-4xl text-stone font-normal leading-tight">Project Title</h3>
+                </div>
+                <button onclick="closeCaseStudy()" class="p-2 rounded-lg border border-white/10 bg-white/[0.03] hover:bg-white/[0.09] text-muted hover:text-stone transition shrink-0" aria-label="Close modal">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="py-6 space-y-6 text-sm leading-relaxed">
+                <div>
+                    <h4 class="font-mono text-[11px] uppercase tracking-wider text-stone/75 mb-2">01. Problem &amp; Context</h4>
+                    <p id="modal-context" class="text-muted"></p>
+                </div>
+
+                <div class="p-4 rounded-xl bg-obsidian/80 border border-white/[0.07]">
+                    <h4 class="font-mono text-[11px] uppercase tracking-wider text-stone/75 mb-2">02. System Architecture</h4>
+                    <p id="modal-architecture" class="text-stone/90"></p>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-[11px] uppercase tracking-wider text-stone/75 mb-2.5">03. Key Technical Execution</h4>
+                    <ul id="modal-highlights" class="space-y-2 text-muted list-disc list-inside marker:text-white/30"></ul>
+                </div>
+
+                <div>
+                    <h4 class="font-mono text-[11px] uppercase tracking-wider text-stone/75 mb-2.5">04. Stack &amp; Tooling</h4>
+                    <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="pt-5 border-t border-white/[0.08] flex flex-wrap items-center justify-between gap-3">
+                <span id="modal-role" class="font-mono text-xs text-muted">Role &amp; Environment</span>
+                <div id="modal-actions" class="flex items-center gap-3"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =====================================================================
+         1. STICKY MINIMAL NAVIGATION HEADER
+    ====================================================================== -->
+    <header class="sticky top-0 z-40 bg-obsidian/80 backdrop-blur-md border-b border-white/[0.07]">
+        <div class="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
+            <!-- Brand / Monogram -->
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="w-7 h-7 rounded-md border border-white/15 bg-white/[0.03] flex items-center justify-center font-serif italic text-base text-stone group-hover:border-white/40 transition">JM</span>
+                <span class="font-medium text-sm tracking-tight text-stone/90 group-hover:text-stone transition">Junaid Musharraf</span>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex items-center gap-6 text-xs font-mono text-muted">
+                <a href="#experience" class="nav-link hover:text-stone transition-colors">Experience</a>
+                <a href="#foundations" class="nav-link hover:text-stone transition-colors">Foundations</a>
+                <a href="#philosophy" class="nav-link hover:text-stone transition-colors">Philosophy</a>
+                <a href="#projects" class="nav-link hover:text-stone transition-colors">Projects</a>
+                <a href="#library" class="nav-link hover:text-stone transition-colors">Library</a>
+                <a href="#contact" class="nav-link hover:text-stone transition-colors">Contact</a>
+            </nav>
+
+            <!-- Right Actions: Resume & GitHub Quick Links -->
+            <div class="flex items-center gap-2">
+                <a href="Junaid_Musharraf_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.07] hover:border-white/25 text-muted hover:text-stone transition items-center gap-1.5" title="Place Junaid_Musharraf_Resume.pdf in the root folder">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span>Resume</span>
+                </a>
+                <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex text-xs font-mono px-3 py-1.5 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/[0.07] hover:border-white/25 text-muted hover:text-stone transition items-center gap-1.5">
+                    <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                    <span>GitHub</span>
+                </a>
+
+                <!-- Mobile Menu Toggle -->
+                <button id="mobile-menu-btn" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg border border-white/10 text-muted hover:text-stone" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-white/10 bg-obsidian px-6 py-4 space-y-3 text-sm font-mono text-muted">
+            <a href="#experience" onclick="toggleMobileMenu()" class="block hover:text-stone">01. Experience</a>
+            <a href="#foundations" onclick="toggleMobileMenu()" class="block hover:text-stone">02. Foundations</a>
+            <a href="#philosophy" onclick="toggleMobileMenu()" class="block hover:text-stone">03. Philosophy</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block hover:text-stone">04. Projects</a>
+            <a href="#library" onclick="toggleMobileMenu()" class="block hover:text-stone">05. Library</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block hover:text-stone">06. Contact</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-4xl mx-auto px-6 relative z-10">
+
+        <!-- =====================================================================
+             2. HERO SECTION
+        ====================================================================== -->
+        <section class="pt-20 pb-24 md:pt-28 md:pb-32 border-b border-white/[0.08]">
+            <!-- Availability & Live Islamabad Local Time Pill -->
+            <div class="inline-flex flex-wrap items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.02] text-xs font-mono text-muted mb-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Islamabad, PK</span>
+                <span class="text-white/20">·</span>
+                <span id="live-clock" class="text-stone/85">--:-- PKT</span>
+                <span class="text-white/20 hidden sm:inline">·</span>
+                <span class="hidden sm:inline">Available for Engineering &amp; Research</span>
+            </div>
+
+            <!-- Main Headline -->
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl leading-[1.08] tracking-tight text-stone font-normal mb-6">
+                <span>Full-Stack Developer</span><br>
+                <span class="italic text-stone/85">architecting resilient systems, AI workflows and refined interfaces.</span>
+            </h1>
+
+            <!-- Intro Narrative -->
+            <p class="text-muted text-base sm:text-lg leading-relaxed max-w-2xl font-light mb-10">
+                Computer Science graduate from Foundation University Islamabad pursuing an MS in Project Management at Bahria University (E-8 Campus). I bridge rigorous systems architecture with structured program governance, delivering full-stack React, Django and PostgreSQL platforms, air-gapped enterprise AI pipelines and scalable digital products.
+            </p>
+
+            <!-- Social & Quick Action Links -->
+            <div class="flex flex-wrap items-center gap-3">
+                <a href="#contact" class="px-5 py-2.5 rounded-lg bg-stone text-obsidian text-sm font-medium hover:bg-white transition flex items-center gap-2">
+                    <span>Initiate Dialogue</span>
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                </a>
+                <a href="#projects" class="px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/25 text-stone/90 text-sm transition flex items-center gap-2">
+                    <i data-lucide="layers" class="w-4 h-4 text-muted"></i>
+                    <span>Selected Works</span>
+                </a>
+                <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/25 text-stone/90 text-sm transition flex items-center gap-2">
+                    <i data-lucide="github" class="w-4 h-4 text-muted"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://www.linkedin.com/in/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/25 text-stone/90 text-sm transition flex items-center gap-2">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-muted"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <button onclick="copyEmail()" class="px-4 py-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.06] hover:border-white/25 text-stone/90 text-sm transition flex items-center gap-2">
+                    <i data-lucide="mail" class="w-4 h-4 text-muted"></i>
+                    <span>jmush2018@gmail.com</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             3. EXPERIENCE & EDUCATION TIMELINE
+        ====================================================================== -->
+        <section id="experience" class="py-24 border-b border-white/[0.08] reveal">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">01 / Chronology</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal">Experience &amp; Education</h2>
+                </div>
+            </div>
+
+            <!-- Vertical Timeline -->
+            <div class="relative border-l border-white/10 ml-2.5 sm:ml-3 space-y-14 pl-7 sm:pl-10">
+                
+                <!-- Role 1: Research Assistant -->
+                <div class="relative group">
+                    <span class="absolute -left-[33px] sm:-left-[45px] top-1.5 w-2.5 h-2.5 rounded-full bg-stone ring-4 ring-obsidian"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                        <h3 class="text-lg font-medium text-stone">Research Assistant</h3>
+                        <span class="font-mono text-xs uppercase tracking-wider text-muted">2026 — PRESENT</span>
+                    </div>
+                    <div class="text-sm font-mono text-stone/75 mb-4">ASCEND (NUST) · Islamabad</div>
+                    <ul class="space-y-2 text-sm text-muted leading-relaxed mb-4 list-disc list-inside marker:text-white/25">
+                        <li>Engineering software data pipelines, air-gapped PostgreSQL administration workflows, and automated daily backup &amp; recovery scripts across offline lab infrastructure.</li>
+                        <li>Authoring formal User Requirement Specifications (URS) and system architectures for enterprise AI platforms.</li>
+                        <li>Enforcing deterministic database integrity and zero-downtime operational continuity across restricted research workstations.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">PostgreSQL</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Python</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">React</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Django</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Enterprise AI Specs</span>
+                    </div>
+                </div>
+
+                <!-- Role 2: Customer Success Representative -->
+                <div class="relative group">
+                    <span class="absolute -left-[33px] sm:-left-[45px] top-1.5 w-2.5 h-2.5 rounded-full bg-white/40 ring-4 ring-obsidian group-hover:bg-stone transition"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                        <h3 class="text-lg font-medium text-stone">Customer Success Representative</h3>
+                        <span class="font-mono text-xs uppercase tracking-wider text-muted">2025 — 2026</span>
+                    </div>
+                    <div class="text-sm font-mono text-stone/75 mb-4">Merchynt (SaaS) · Remote</div>
+                    <ul class="space-y-2 text-sm text-muted leading-relaxed mb-4 list-disc list-inside marker:text-white/25">
+                        <li>Leading technical onboarding, account retention and workflow optimization for clients adopting AI-driven local SEO SaaS tools.</li>
+                        <li>Synthesizing frontline user diagnostics into structured product feedback loops for engineering releases.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">SaaS Operations</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Client Onboarding</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Technical Diagnostics</span>
+                    </div>
+                </div>
+
+                <!-- Role 3: Full-Stack Web Developer -->
+                <div class="relative group">
+                    <span class="absolute -left-[33px] sm:-left-[45px] top-1.5 w-2.5 h-2.5 rounded-full bg-white/30 ring-4 ring-obsidian group-hover:bg-stone transition"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                        <h3 class="text-lg font-medium text-stone">Full-Stack Web Developer</h3>
+                        <span class="font-mono text-xs uppercase tracking-wider text-muted">2024 — 2025</span>
+                    </div>
+                    <div class="text-sm font-mono text-stone/75 mb-4">Digital Mind Solution · Islamabad</div>
+                    <ul class="space-y-2 text-sm text-muted leading-relaxed mb-4 list-disc list-inside marker:text-white/25">
+                        <li>Architecting end-to-end web applications powered by React, Django REST Framework, and PostgreSQL with responsive editorial UIs.</li>
+                        <li>Delivered commercial web engineering, WooCommerce storefronts, and custom Elementor Pro builds including client engagements at Digital Mind Solution.</li>
+                    </ul>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">React</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">Django REST</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">PostgreSQL</span>
+                        <span class="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/[0.03] border border-white/10 text-stone/80">WooCommerce</span>
+                    </div>
+                </div>
+
+                <!-- Education 1: MS Project Management -->
+                <div class="relative group">
+                    <span class="absolute -left-[33px] sm:-left-[45px] top-1.5 w-2.5 h-2.5 rounded-full border border-stone/70 bg-obsidian ring-4 ring-obsidian group-hover:bg-stone transition"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                        <h3 class="text-base font-medium text-stone">Masters in Project Management</h3>
+                        <span class="font-mono text-xs uppercase tracking-wider text-muted">2025 — PRESENT</span>
+                    </div>
+                    <div class="text-sm font-mono text-stone/70 mb-2">Bahria University</div>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Focusing on organizational governance, RACI matrix design, agile software delivery, risk mitigation, and complex systems program management.
+                    </p>
+                </div>
+
+                <!-- Education 2: BS Computer Science -->
+                <div class="relative group">
+                    <span class="absolute -left-[33px] sm:-left-[45px] top-1.5 w-2.5 h-2.5 rounded-full border border-white/40 bg-obsidian ring-4 ring-obsidian group-hover:bg-stone transition"></span>
+                    <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-1.5">
+                        <h3 class="text-base font-medium text-stone">Bachelor's in Computer Science</h3>
+                        <span class="font-mono text-xs uppercase tracking-wider text-muted">2021 — 2025</span>
+                    </div>
+                    <div class="text-sm font-mono text-stone/70 mb-2">Foundation University</div>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Grounded in algorithms, relational database systems, software engineering, and applied AI—culminating in an AI-Enhanced Wireless Sound System capstone.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Inspirational Quote at Base of Timeline -->
+            <blockquote class="mt-16 pt-8 border-t border-white/[0.06] flex items-start gap-4">
+                <i data-lucide="quote" class="w-5 h-5 text-white/20 shrink-0 mt-1"></i>
+                <div>
+                    <p class="font-serif italic text-xl sm:text-2xl text-stone/85 leading-snug">
+                        “Precision in architecture and discipline in execution turn complex systems into quiet, reliable instruments.”
+                    </p>
+                    <footer class="font-mono text-xs text-muted mt-2 uppercase tracking-wider">Systems Engineering &amp; Project Governance Ethos</footer>
+                </div>
+            </blockquote>
+        </section>
+
+        <!-- =====================================================================
+             4. FOUNDATIONS (TECH STACK — ARCHITECTURAL PILLARS)
+        ====================================================================== -->
+        <section id="foundations" class="py-24 border-b border-white/[0.08] reveal">
+            <div class="mb-14">
+                <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">02 / Architecture</span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal">Foundations</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Pillar 1: Frontend -->
+                <div class="spotlight-card p-6 rounded-xl border border-white/[0.08] bg-surface/60 hover:border-white/20 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-mono text-xs text-muted uppercase tracking-wider">Frontend</span>
+                            <i data-lucide="layout-template" class="w-4 h-4 text-stone/60"></i>
+                        </div>
+                        <h3 class="font-serif italic text-2xl text-stone mb-3">“The Facade of Reason”</h3>
+                        <p class="text-xs text-muted leading-relaxed mb-6">
+                            Interfaces crafted with typographic precision, responsive editorial layouts, and deterministic state management.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">React</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Vite</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Typescript</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">JavaScript</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Tailwind</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Bootstrap</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Three.js</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Backend & Data -->
+                <div class="spotlight-card p-6 rounded-xl border border-white/[0.08] bg-surface/60 hover:border-white/20 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-mono text-xs text-muted uppercase tracking-wider">Backend &amp; Data</span>
+                            <i data-lucide="server" class="w-4 h-4 text-stone/60"></i>
+                        </div>
+                        <h3 class="font-serif italic text-2xl text-stone mb-3">“The Subterranean Core”</h3>
+                        <p class="text-xs text-muted leading-relaxed mb-6">
+                            Relational schemas, RESTful APIs, and resilient data pipelines engineered for integrity and throughput.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Node.js</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Java</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Python</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Express</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Mongodb</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">PostgreSQL</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">REST APIs</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Infrastructure & Tools -->
+                <div class="spotlight-card p-6 rounded-xl border border-white/[0.08] bg-surface/60 hover:border-white/20 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-mono text-xs text-muted uppercase tracking-wider">Infrastructure &amp; Tools</span>
+                            <i data-lucide="compass" class="w-4 h-4 text-stone/60"></i>
+                        </div>
+                        <h3 class="font-serif italic text-2xl text-stone mb-3">“The Artisan's Arsenal”</h3>
+                        <p class="text-xs text-muted leading-relaxed mb-6">
+                            Automated database backups, container orchestration, server administration, and cloud foundations.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5 pt-4 border-t border-white/[0.06]">
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Git</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Figma</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Docker</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">AWS</span>
+                        <span class="px-2.5 py-1 rounded text-xs font-mono bg-white/[0.03] text-stone/85 border border-white/[0.07]">Antigravity</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Architectural Quote Below Pillars -->
+            <div class="mt-12 text-center max-w-2xl mx-auto">
+                <p class="font-serif italic text-xl sm:text-2xl text-stone/80 leading-relaxed">
+                    “The strength of the structure lies in the integrity of its base; mastery is but logic applied with discipline.”
+                </p>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             5. ENGINEERING PHILOSOPHY
+        ====================================================================== -->
+        <section id="philosophy" class="py-24 border-b border-white/[0.08] reveal">
+            <div class="mb-14">
+                <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">03 / Ethos</span>
+                <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal">Engineering Philosophy</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Principle 1 -->
+                <div class="border-t border-white/15 pt-6">
+                    <span class="font-mono text-xs text-muted block mb-3">I.</span>
+                    <h3 class="font-serif text-2xl text-stone mb-3">Air-Gapped &amp; Data Resilience</h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Data is the foundation of institutional trust. From automated PostgreSQL backup pipelines to air-gapped deployments, every system is engineered for strict integrity, deterministic recovery, and zero silent failures.
+                    </p>
+                </div>
+
+                <!-- Principle 2 -->
+                <div class="border-t border-white/15 pt-6">
+                    <span class="font-mono text-xs text-muted block mb-3">II.</span>
+                    <h3 class="font-serif text-2xl text-stone mb-3">End-to-End Ownership</h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Bridging low-level database administration and RESTful APIs with responsive React interfaces and structured project management rigor—ensuring technical architecture aligns seamlessly with stakeholder outcomes.
+                    </p>
+                </div>
+
+                <!-- Principle 3 -->
+                <div class="border-t border-white/15 pt-6">
+                    <span class="font-mono text-xs text-muted block mb-3">III.</span>
+                    <h3 class="font-serif text-2xl text-stone mb-3">Human-Centered Clarity</h3>
+                    <p class="text-sm text-muted leading-relaxed">
+                        Complex backend pipelines and external APIs only create value when their complexity is distilled into calm, intuitive interfaces that empower users to act with clarity.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             6. SELECTED PROJECTS
+        ====================================================================== -->
+        <section id="projects" class="py-24 border-b border-white/[0.08] reveal">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">04 / Selected Works</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal">Projects</h2>
+                    <p class="text-xs font-mono text-muted mt-2">Select any project to inspect system architecture &amp; execution notes.</p>
+                </div>
+                <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="font-mono text-xs text-muted hover:text-stone transition flex items-center gap-1.5">
+                    <span>Explore GitHub Archive</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+
+            <!-- Featured Projects Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Project Card 1: TaskFlow Full-Stack -->
+                <article onclick="openCaseStudy('taskflow')" class="spotlight-card cursor-pointer group p-7 rounded-xl border border-white/[0.08] bg-surface/50 hover:bg-surface hover:border-white/25 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="font-mono text-xs text-muted">01 / FULL-STACK APPLICATION</span>
+                            <a href="https://github.com/junaidmusharraf/taskflow-fullstack" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition" title="GitHub Repository">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="font-serif text-3xl text-stone mb-3 group-hover:text-white transition">TaskFlow Full-Stack</h3>
+                        <p class="text-sm text-muted leading-relaxed mb-6">
+                            Full-stack task and workflow management application built with React, Django REST Framework, and PostgreSQL featuring a dark studio UI, live metrics strip, and quick filters.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">React</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Django REST</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">PostgreSQL</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                            <span class="text-stone group-hover:underline flex items-center gap-1">
+                                Inspect Architecture <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                            <a href="https://github.com/junaidmusharraf/taskflow-fullstack" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 2: Nexus Management Suite -->
+                <article onclick="openCaseStudy('nexus')" class="spotlight-card cursor-pointer group p-7 rounded-xl border border-white/[0.08] bg-surface/50 hover:bg-surface hover:border-white/25 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="font-mono text-xs text-muted">02 / OPERATIONS &amp; RESOURCE SUITE</span>
+                            <a href="https://github.com/junaidmusharraf/nexus-management-suite" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition" title="GitHub Repository">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="font-serif text-3xl text-stone mb-3 group-hover:text-white transition">Nexus Management Suite</h3>
+                        <p class="text-sm text-muted leading-relaxed mb-6">
+                            Centralized management and operational workflow suite engineered to coordinate team deliverables, structured records, and cross-functional tracking within a unified interface.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Full-Stack</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">REST APIs</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Relational DB</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                            <span class="text-stone group-hover:underline flex items-center gap-1">
+                                Inspect Architecture <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                            <a href="https://github.com/junaidmusharraf/nexus-management-suite" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 3: Spotify Album Finder -->
+                <article onclick="openCaseStudy('spotify')" class="spotlight-card cursor-pointer group p-7 rounded-xl border border-white/[0.08] bg-surface/50 hover:bg-surface hover:border-white/25 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="font-mono text-xs text-muted">03 / API INTEGRATION · MUSIC DISCOVERY</span>
+                            <a href="https://github.com/junaidmusharraf/Spotify-album-finder" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition" title="GitHub Repository">
+                                <i data-lucide="github" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                        <h3 class="font-serif text-3xl text-stone mb-3 group-hover:text-white transition">Spotify Album Finder</h3>
+                        <p class="text-sm text-muted leading-relaxed mb-6">
+                            Interactive music discovery application integrating the Spotify Web API to search artists, explore complete discographies, and inspect album metadata with instant visual feedback.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">React</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Spotify Web API</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">JavaScript</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                            <span class="text-stone group-hover:underline flex items-center gap-1">
+                                Inspect Architecture <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                            <a href="https://github.com/junaidmusharraf/Spotify-album-finder" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()" class="text-muted hover:text-stone transition">
+                                Source Code
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 4: AI-Enhanced Wireless Sound System -->
+                <article onclick="openCaseStudy('sound')" class="spotlight-card cursor-pointer group p-7 rounded-xl border border-white/[0.08] bg-surface/50 hover:bg-surface hover:border-white/25 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-5">
+                            <span class="font-mono text-xs text-muted">04 / CS CAPSTONE · EMBEDDED AI</span>
+                            <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-stone/70">FUI</span>
+                        </div>
+                        <h3 class="font-serif text-3xl text-stone mb-3 group-hover:text-white transition">AI-Enhanced Wireless Sound System</h3>
+                        <p class="text-sm text-muted leading-relaxed mb-6">
+                            Final-year Computer Science capstone featuring hands-free voice-controlled audio management, low-latency wireless streaming, and embedded hardware-software integration.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-5">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Python</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Voice Recognition</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Embedded Systems</span>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 pt-4 border-t border-white/[0.06] text-xs font-mono">
+                            <span class="text-stone group-hover:underline flex items-center gap-1">
+                                Inspect Architecture <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                            </span>
+                            <span class="text-muted">Capstone Thesis</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Project Card 5: Islamabad Metro Bus Organizational Analysis (Full Width Span on Desktop) -->
+                <article onclick="openCaseStudy('metro')" class="spotlight-card cursor-pointer md:col-span-2 group p-7 rounded-xl border border-white/[0.08] bg-surface/50 hover:bg-surface hover:border-white/25 hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="font-mono text-xs text-muted">05 / PROJECT MANAGEMENT CASE STUDY</span>
+                            <span class="font-mono text-[10px] px-2 py-0.5 rounded bg-white/[0.04] border border-white/10 text-stone/70">MS-PM · BAHRIA</span>
+                        </div>
+                        <h3 class="font-serif text-2xl sm:text-3xl text-stone mb-3 group-hover:text-white transition">Islamabad Metro Bus Rapid Transit Organizational Analysis</h3>
+                        <p class="text-sm text-muted leading-relaxed mb-6 max-w-3xl">
+                            Comprehensive project management and governance case study examining public transit organizational structure, cross-departmental RACI matrix design, stakeholder alignment, and structured conflict resolution frameworks.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-white/[0.06]">
+                        <div class="flex flex-wrap gap-1.5">
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">RACI Matrix</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Organizational Design</span>
+                            <span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.03] border border-white/[0.08] text-stone/80">Conflict Resolution</span>
+                        </div>
+                        <span class="text-xs font-mono text-stone group-hover:underline flex items-center gap-1">
+                            Inspect Case Study <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- View More on GitHub CTA -->
+            <div class="mt-12 flex justify-center">
+                <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="px-6 py-3 rounded-lg border border-white/15 bg-white/[0.02] hover:bg-white/[0.07] hover:border-white/30 text-sm font-mono text-stone transition flex items-center gap-2.5">
+                    <i data-lucide="github" class="w-4 h-4"></i>
+                    <span>View Complete Repository Index on GitHub</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4 text-muted"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             7. THE LIBRARY (CERTIFICATIONS & READING ROOM)
+        ====================================================================== -->
+        <section id="library" class="py-24 border-b border-white/[0.08] reveal">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">05 / Reading Room &amp; Credentials</span>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal">The Library</h2>
+                    <p class="text-sm text-muted mt-2">Cloud certifications, systems literature, and stoic philosophy shaping my craft.</p>
+                </div>
+
+                <!-- Carousel Left/Right Navigation Controls -->
+                <div class="flex items-center gap-2">
+                    <button onclick="scrollLibrary(-1)" class="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.08] hover:border-white/25 text-stone transition" aria-label="Scroll library left">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    </button>
+                    <button onclick="scrollLibrary(1)" class="p-2.5 rounded-lg border border-white/10 bg-white/[0.02] hover:bg-white/[0.08] hover:border-white/25 text-stone transition" aria-label="Scroll library right">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Shelf -->
+            <div id="library-carousel" class="flex gap-6 overflow-x-auto no-scrollbar pb-4 scroll-smooth snap-x">
+                
+                <!-- Volume 1: AWS Solutions Architect -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#231f1a] to-[#110f0d] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-amber-200/60">CLOUD · METAPI</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-amber-200/40 mb-3"></div>
+                            <h4 class="font-serif text-xl leading-tight text-stone">AWS Solutions Architect</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-amber-200/60">CERTIFICATION</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">AWS Solutions Architect</h3>
+                    <p class="text-xs text-muted">MetaPi Cloud Track</p>
+                </div>
+
+                <!-- Volume 2: Microsoft Azure -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#191d24] to-[#0d0f12] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-slate-400">CLOUD · METAPI</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-slate-300/40 mb-3"></div>
+                            <h4 class="font-serif italic text-xl leading-tight text-stone">Microsoft Azure Infrastructure</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-slate-400/80">CERTIFICATION</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">Microsoft Azure</h3>
+                    <p class="text-xs text-muted">MetaPi Cloud Track</p>
+                </div>
+
+                <!-- Volume 3: Designing Data-Intensive Applications -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#17201c] to-[#0c110f] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-emerald-200/60">DATA SYSTEMS</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-emerald-200/40 mb-3"></div>
+                            <h4 class="font-serif italic text-xl leading-tight text-stone">Designing Data-Intensive Applications</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-emerald-200/60">M. KLEPPMANN</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">Designing Data-Intensive Apps</h3>
+                    <p class="text-xs text-muted">Martin Kleppmann</p>
+                </div>
+
+                <!-- Volume 4: The Pragmatic Programmer -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#20191e] to-[#100c0f] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-rose-200/60">CRAFTSMANSHIP</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-rose-200/40 mb-3"></div>
+                            <h4 class="font-serif text-xl leading-tight text-stone">The Pragmatic Programmer</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-rose-200/60">HUNT &amp; THOMAS</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">The Pragmatic Programmer</h3>
+                    <p class="text-xs text-muted">Andrew Hunt &amp; David Thomas</p>
+                </div>
+
+                <!-- Volume 5: Clean Architecture -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#1c1c1c] to-[#0f0f0f] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-muted">ARCHITECTURE</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-stone/40 mb-3"></div>
+                            <h4 class="font-serif italic text-xl leading-tight text-stone">Clean Architecture</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-muted/80">R. C. MARTIN</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">Clean Architecture</h3>
+                    <p class="text-xs text-muted">Robert C. Martin</p>
+                </div>
+
+                <!-- Volume 6: Meditations -->
+                <div class="book-card shrink-0 w-44 sm:w-48 snap-start">
+                    <div class="book-cover aspect-[2/3] rounded-r-md rounded-l-sm bg-gradient-to-br from-[#1d1d1b] to-[#0e0e0d] border border-white/15 p-5 flex flex-col justify-between relative overflow-hidden mb-3.5">
+                        <div class="absolute left-0 inset-y-0 w-2 bg-white/[0.06] border-r border-black/50"></div>
+                        <span class="font-mono text-[10px] tracking-widest uppercase text-stone/60">PHILOSOPHY</span>
+                        <div>
+                            <div class="w-6 h-[1px] bg-stone/40 mb-3"></div>
+                            <h4 class="font-serif text-xl leading-tight text-stone">Meditations</h4>
+                        </div>
+                        <span class="font-mono text-[10px] text-stone/60">M. AURELIUS</span>
+                    </div>
+                    <h3 class="text-sm font-medium text-stone truncate">Meditations</h3>
+                    <p class="text-xs text-muted">Marcus Aurelius</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             8. CONTACT SECTION
+        ====================================================================== -->
+        <section id="contact" class="py-24 reveal">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                
+                <!-- Left Column: Direct Info & Copy Email -->
+                <div class="md:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="font-mono text-xs uppercase tracking-widest text-muted block mb-2">06 / Correspondence</span>
+                        <h2 class="font-serif text-4xl sm:text-5xl text-stone font-normal mb-4">Initiate Dialogue</h2>
+                        <p class="text-sm text-muted leading-relaxed mb-8">
+                            Whether discussing full-stack engineering, AI systems architecture, or project management roles, my inbox is open to thoughtful correspondence.
+                        </p>
+
+                        <!-- Copy Email Card -->
+                        <div class="p-4 rounded-xl border border-white/10 bg-surface/70 mb-6">
+                            <span class="font-mono text-[10px] uppercase tracking-wider text-muted block mb-1.5">Direct Electronic Mail</span>
+                            <div class="flex items-center justify-between gap-2">
+                                <span id="contact-email-text" class="font-mono text-sm text-stone truncate">jmush2018@gmail.com</span>
+                                <button onclick="copyEmail()" class="px-3 py-1.5 rounded-lg border border-white/10 bg-white/[0.04] hover:bg-white/[0.1] text-xs font-mono text-stone transition flex items-center gap-1.5 shrink-0">
+                                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                                    <span id="copy-btn-label">Copy</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location, LinkedIn & GitHub -->
+                    <div class="font-mono text-xs text-muted space-y-2.5 pt-6 border-t border-white/[0.06]">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-stone/60"></i>
+                            <span>Islamabad, Pakistan (PKT / UTC+5)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="linkedin" class="w-3.5 h-3.5 text-stone/60"></i>
+                            <a href="https://www.linkedin.com/in/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="hover:text-stone transition">linkedin.com/in/junaidmusharraf</a>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="github" class="w-3.5 h-3.5 text-stone/60"></i>
+                            <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="hover:text-stone transition">github.com/junaidmusharraf</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Minimalist Contact Form with Direct Mail Handoff -->
+                <div class="md:col-span-7">
+                    <form id="contact-form" onsubmit="handleContactSubmit(event)" class="spotlight-card space-y-4 p-6 sm:p-8 rounded-2xl border border-white/[0.08] bg-surface/40">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">Name</label>
+                                <input type="text" id="name" name="name" required placeholder="Junaid Musharraf" class="w-full px-4 py-2.5 rounded-lg bg-obsidian border border-white/10 text-sm text-stone placeholder:text-white/20 focus:outline-none focus:border-white/40 transition">
+                            </div>
+                            <div>
+                                <label for="email" class="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">Email</label>
+                                <input type="email" id="email" name="email" required placeholder="jmush2018@gmail.com" class="w-full px-4 py-2.5 rounded-lg bg-obsidian border border-white/10 text-sm text-stone placeholder:text-white/20 focus:outline-none focus:border-white/40 transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required placeholder="Architectural Inquiry / Opportunity" class="w-full px-4 py-2.5 rounded-lg bg-obsidian border border-white/10 text-sm text-stone placeholder:text-white/20 focus:outline-none focus:border-white/40 transition">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block font-mono text-[11px] uppercase tracking-wider text-muted mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Share the context, timeline, or vision..." class="w-full px-4 py-2.5 rounded-lg bg-obsidian border border-white/10 text-sm text-stone placeholder:text-white/20 focus:outline-none focus:border-white/40 transition resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" id="submit-btn" class="w-full py-3 px-6 rounded-lg bg-stone text-obsidian font-medium text-sm hover:bg-white transition flex items-center justify-center gap-2">
+                            <span>Compose &amp; Send via Mail Client</span>
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =====================================================================
+         9. MINIMALIST FOOTER
+    ====================================================================== -->
+    <footer class="border-t border-white/[0.08] py-10 mt-8">
+        <div class="max-w-4xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted">
+            <div>© 2026 Junaid Musharraf · Islamabad</div>
+            <div class="flex items-center gap-6">
+                <a href="Junaid_Musharraf_Resume.pdf" target="_blank" rel="noopener noreferrer" class="hover:text-stone transition">Resume</a>
+                <a href="https://www.linkedin.com/in/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="hover:text-stone transition">LinkedIn</a>
+                <a href="https://github.com/junaidmusharraf" target="_blank" rel="noopener noreferrer" class="hover:text-stone transition">GitHub</a>
+                <a href="#" class="hover:text-stone transition flex items-center gap-1">
+                    Top <i data-lucide="arrow-up" class="w-3 h-3"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- =====================================================================
+         JAVASCRIPT: CASE STUDY MODAL, SPOTLIGHT, CLOCK & INTERACTIVITY
+    ====================================================================== -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // 1. Live Islamabad (PKT) Clock
+        function updateIslamabadClock() {
+            const clockEl = document.getElementById('live-clock');
+            if (!clockEl) return;
+            try {
+                const now = new Date();
+                const formatted = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'Asia/Karachi',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                }).format(now);
+                clockEl.textContent = `${formatted} PKT`;
+            } catch (e) {
+                clockEl.textContent = 'PKT (UTC+5)';
+            }
+        }
+        updateIslamabadClock();
+        setInterval(updateIslamabadClock, 15000);
+
+        // 2. Tactile Cursor Spotlight Tracking
+        document.querySelectorAll('.spotlight-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // 3. Project Case Study Data & Modal Logic
+        const caseStudies = {
+            taskflow: {
+                category: '01 / FULL-STACK APPLICATION ARCHITECTURE',
+                title: 'TaskFlow Full-Stack',
+                context: 'Teams managing multi-stage engineering tasks often lose momentum in bloated project trackers. TaskFlow was engineered as a low-latency, distraction-free studio workspace combining real-time task state filtering with relational persistence.',
+                architecture: 'Decoupled single-page React frontend communicating via RESTful JSON endpoints with a Django REST Framework backend backed by a normalized PostgreSQL database.',
+                highlights: [
+                    'Engineered custom DRF ViewSets and serializers with clean status filtering, priority indexing, and deterministic API routing.',
+                    'Designed a dark studio UI featuring a live metrics strip, instant status toggles, and zero-reload state transitions.',
+                    'Structured environment isolation across Python virtual environments and Vite build workflows for clean local and cloud deployment.'
+                ],
+                tags: ['React', 'Vite', 'Django REST Framework', 'Python', 'PostgreSQL'],
+                role: 'Full-Stack Architecture & Implementation',
+                repoUrl: 'https://github.com/junaidmusharraf/taskflow-fullstack'
+            },
+           
+            nexus: {
+                category: '02 / OPERATIONS & RESOURCE SUITE · GITHUB',
+                title: 'Nexus Management Suite',
+                context: 'Coordinating operational workflows, resource allocations, and project milestones across fragmented spreadsheets creates visibility gaps. Nexus Management Suite was built to centralize structured operational tracking.',
+                architecture: 'Modular full-stack web architecture combining a responsive client interface with structured REST API endpoints and relational database persistence.',
+                highlights: [
+                    'Designed unified dashboards and CRUD workflows for managing organizational records, task pipelines, and status lifecycles.',
+                    'Structured clean API contracts and modular frontend components to keep state predictable as data volume scales.',
+                    'Engineered with maintainability and clear separation of concerns across data, business logic, and UI layers.'
+                ],
+                tags: ['Full-Stack', 'JavaScript / React', 'REST APIs', 'Relational Database'],
+                role: 'Full-Stack Developer',
+                repoUrl: 'https://github.com/junaidmusharraf/nexus-management-suite'
+            },
+            spotify: {
+                category: '03 / WEB API INTEGRATION · MUSIC DISCOVERY',
+                title: 'Spotify Album Finder',
+                context: 'Browsing an artist’s complete catalog and release metadata quickly requires low-latency search and clean visual organization without clutter.',
+                architecture: 'Client-side web application authenticating against the Spotify Web API to query artist endpoints, resolve discography catalogs, and render high-resolution album artwork and release details.',
+                highlights: [
+                    'Implemented OAuth token handling and asynchronous API queries against Spotify’s Search and Artist Albums endpoints.',
+                    'Built responsive album grids displaying release dates, track counts, cover art, and direct Spotify playback links.',
+                    'Handled empty states, rate-limit resilience, and instant search ergonomics for smooth browsing.'
+                ],
+                tags: ['React', 'JavaScript (ES6+)', 'Spotify Web API', 'REST / OAuth'],
+                role: 'Frontend & API Integration',
+                repoUrl: 'https://github.com/junaidmusharraf/Spotify-album-finder'
+            },
+
+            sound: {
+                category: '04 / COMPUTER SCIENCE CAPSTONE · FUI',
+                title: 'AI-Enhanced Wireless Sound System',
+                context: 'Conventional wireless audio setups rely on manual device interaction for playback control and environment adaptation. This final-year Computer Science capstone explored hands-free, voice-driven audio management.',
+                architecture: 'Embedded Python audio processing pipeline pairing real-time speech command recognition with low-latency wireless audio routing and state feedback.',
+                highlights: [
+                    'Implemented voice-intent parsing to execute playback, volume, and source-switching commands without physical device touch.',
+                    'Integrated hardware-software communication layers for responsive acoustic control and minimal command latency.',
+                    'Delivered full system documentation, architecture diagrams, and live hardware demonstration.'
+                ],
+                tags: ['Python', 'Speech Recognition', 'Embedded Systems', 'Wireless Audio'],
+                role: 'Lead Developer · BS CS Final-Year Project',
+                repoUrl: null
+            },
+            metro: {
+                category: '05 / PROJECT MANAGEMENT CASE STUDY · MS-PM',
+                title: 'Islamabad Metro Bus Rapid Transit Organizational Analysis',
+                context: 'Large-scale urban transit infrastructure depends on clear lines of authority and rapid inter-departmental escalation. This graduate study analyzed operational bottlenecks across the Islamabad Metro BRT network.',
+                architecture: 'Organizational governance framework combining functional hierarchy mapping, cross-unit RACI responsibility matrices, and structured conflict-resolution protocols.',
+                highlights: [
+                    'Constructed detailed RACI matrices clarifying Responsible, Accountable, Consulted, and Informed roles across operations, maintenance, and vendor teams.',
+                    'Identified structural authority overlaps and proposed streamlined escalation paths to reduce operational response latency.',
+                    'Applied formal project management conflict-resolution frameworks to real-world public infrastructure coordination scenarios.'
+                ],
+                tags: ['RACI Matrix', 'Organizational Design', 'Stakeholder Governance', 'Conflict Resolution'],
+                role: 'Project Management Analyst · Bahria University',
+                repoUrl: null
+            }
+        };
+
+        function openCaseStudy(key) {
+            const data = caseStudies[key];
+            if (!data) return;
+
+            document.getElementById('modal-category').textContent = data.category;
+            document.getElementById('modal-title').textContent = data.title;
+            document.getElementById('modal-context').textContent = data.context;
+            document.getElementById('modal-architecture').textContent = data.architecture;
+            document.getElementById('modal-role').textContent = data.role;
+
+            const highlightsEl = document.getElementById('modal-highlights');
+            highlightsEl.innerHTML = data.highlights.map(item => `<li>${item}</li>`).join('');
+
+            const tagsEl = document.getElementById('modal-tags');
+            tagsEl.innerHTML = data.tags.map(tag => `<span class="px-2.5 py-1 rounded text-[11px] font-mono bg-white/[0.04] border border-white/10 text-stone/85">${tag}</span>`).join('');
+
+            const actionsEl = document.getElementById('modal-actions');
+            if (data.repoUrl) {
+                actionsEl.innerHTML = `
+                    <a href="${data.repoUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-lg bg-stone text-obsidian text-xs font-mono font-medium hover:bg-white transition flex items-center gap-1.5">
+                        <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                        <span>View on GitHub</span>
+                    </a>
+                `;
+            } else {
+                actionsEl.innerHTML = `
+                    <a href="#contact" onclick="closeCaseStudy()" class="px-4 py-2 rounded-lg border border-white/15 bg-white/[0.04] hover:bg-white/[0.09] text-stone text-xs font-mono transition flex items-center gap-1.5">
+                        <span>Request Architecture Brief</span>
+                        <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                    </a>
+                `;
+            }
+
+            lucide.createIcons();
+
+            const modal = document.getElementById('case-study-modal');
+            const panel = document.getElementById('case-study-panel');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+
+            requestAnimationFrame(() => {
+                modal.classList.remove('opacity-0');
+                panel.classList.remove('scale-95', 'opacity-0');
+                panel.classList.add('scale-100', 'opacity-100');
+            });
+        }
+
+        function closeCaseStudy() {
+            const modal = document.getElementById('case-study-modal');
+            const panel = document.getElementById('case-study-panel');
+            modal.classList.add('opacity-0');
+            panel.classList.remove('scale-100', 'opacity-100');
+            panel.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 250);
+        }
+
+        function handleModalBackdropClick(event) {
+            if (event.target.id === 'case-study-modal') {
+                closeCaseStudy();
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeCaseStudy();
+            }
+        });
+
+        // 4. Toast Notification System
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.textContent = message;
+            
+            toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            clearTimeout(window.toastTimeout);
+            window.toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3400);
+        }
+
+        // 5. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // 6. Copy Email to Clipboard
+        function copyEmail() {
+            const emailText = document.getElementById('contact-email-text').innerText.trim();
+            const btnLabel = document.getElementById('copy-btn-label');
+
+            const textArea = document.createElement('textarea');
+            textArea.value = emailText;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+
+            try {
+                document.execCommand('copy');
+                btnLabel.textContent = 'Copied';
+                showToast(`Copied ${emailText} to clipboard`);
+                setTimeout(() => {
+                    btnLabel.textContent = 'Copy';
+                }, 2000);
+            } catch (err) {
+                showToast('Unable to copy email automatically.');
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // 7. Library Horizontal Carousel Scroll
+        function scrollLibrary(direction) {
+            const carousel = document.getElementById('library-carousel');
+            const scrollAmount = 240;
+            carousel.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+
+        // 8. Contact Form Submission Handler (Direct Mail Handoff)
+        function handleContactSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            const recipient = 'jmush2018@gmail.com';
+            const formattedSubject = encodeURIComponent(`[Portfolio] ${subject} — from ${name}`);
+            const formattedBody = encodeURIComponent(
+                `Name: ${name}\nReply-To: ${email}\n\n${message}`
+            );
+
+            window.location.href = `mailto:${recipient}?subject=${formattedSubject}&body=${formattedBody}`;
+            showToast('Opening your email client with your drafted message.');
+            event.target.reset();
+        }
+
+        // 9. Scroll Reveal & Active Navigation Highlighting
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(section => {
+                revealObserver.observe(section);
+            });
+
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.getAttribute('id');
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                        });
+                    }
+                });
+            }, { rootMargin: '-35% 0px -55% 0px' });
+
+            sections.forEach(section => navObserver.observe(section));
+        });
+    </script>
+</body>
+</html>
