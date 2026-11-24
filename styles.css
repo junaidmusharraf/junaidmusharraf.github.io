@@ -1,0 +1,147 @@
+/* Base Styling & Subtle Film Grain Overlay */
+:root {
+    --bg-primary: #0a0a0a;
+    --text-primary: #f3f2ee;
+    --text-muted: #888888;
+    --border-hairline: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Editorial Serif Heading Treatment */
+.font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.01em;
+}
+
+/* Subtle Noise Texture Overlay */
+.grain-overlay {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 50;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #404040;
+}
+
+/* Hide horizontal scrollbar while maintaining scrollability */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Subtle Ambient Radial Glow */
+.ambient-glow {
+    background: radial-gradient(circle at 50% 0%, rgba(243, 242, 238, 0.045) 0%, rgba(10, 10, 10, 0) 65%);
+}
+
+/* Tactile Cursor Spotlight on Cards */
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+}
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+        520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(243, 242, 238, 0.065),
+        transparent 45%
+    );
+    z-index: 1;
+}
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+.spotlight-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* Active Navigation State */
+.nav-link.active {
+    color: #f3f2ee;
+}
+
+/* Fade-in Reveal Animation */
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Case Study Modal Transition */
+#case-study-modal {
+    transition: opacity 0.25s ease;
+}
+#case-study-panel {
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease;
+}
+
+/* Custom SVG Pointer + Ambient Spotlight Glow (Fine Pointer Devices Only) */
+.cursor-glow {
+    display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    /* Low-specificity base rule: Crisp stone-outlined editorial arrow */
+    :where(html, body, body *:not(input):not(textarea):not(select):not([contenteditable="true"])) {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%230a0a0a' stroke='%23f3f2ee' stroke-width='1.75' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 4 7.07 17 2.51-7.39L21 11.07z'/%3E%3C/svg%3E") 4 4, auto;
+    }
+
+    /* Higher-specificity interactive rule: Solid stone arrow on links, buttons, cards & their children */
+    body a,
+    body a *,
+    body button,
+    body button *,
+    body article[onclick],
+    body article[onclick] *,
+    body [role="button"],
+    body [role="button"] * {
+        cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='%23f3f2ee' stroke='%230a0a0a' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 4 7.07 17 2.51-7.39L21 11.07z'/%3E%3C/svg%3E") 4 4, pointer;
+    }
+
+    /* Keep standard text I-beam inside form fields */
+    body input,
+    body textarea,
+    body select,
+    body [contenteditable="true"] {
+        cursor: text;
+    }
+}
